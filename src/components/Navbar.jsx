@@ -1,21 +1,20 @@
 import { useState } from "react";
 
 const navLinks = [
-  { name: "Home", href: "#", active: true },
-  { name: "About", href: "#" },
-  { name: "Services", href: "#" },
-  { name: "Contact", href: "#" },
+  { name: "Home", href: "#" , active: true},
+  { name: "About us", href: "#about" },
+  { name: "Contact", href: "#contact" },
 ];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="absolute inset-0 -z-10 h-full w-full bg-gradient-to-b from-slate-50 via-blue-100 to-blue-300 border-gray-200 ">
+    <nav className="relative z-50 h-full w-full bg-slate-50">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="https://flowbite.com/" className="flex items-center space-x-3">
+        <a href="" className="flex items-center space-x-3">
           {/* <img
-            src="https://flowbite.com/docs/images/logo.svg"
+            src=""
             className="h-8"
             alt="Flowbite Logo"
           /> */}
@@ -30,8 +29,8 @@ const Navbar = () => {
           </button>
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 "
-            aria-expanded={isOpen}
+            className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+            aria-expanded={isOpen ? "true" : "false"}
           >
             <span className="sr-only">Open main menu</span>
             <svg
@@ -52,12 +51,12 @@ const Navbar = () => {
         </div>
 
         <div
-          className={`items-center justify-between ${
+          className={`${
             isOpen ? "block" : "hidden"
-          } w-full md:flex md:w-auto md:order-1`}
+          } w-full md:flex md:w-auto md:order-1 md:block`}
           id="navbar-cta"
         >
-          <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white ">
+          <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white">
             {navLinks.map((link, index) => (
               <li key={index}>
                 <a
@@ -65,7 +64,7 @@ const Navbar = () => {
                   className={`block py-2 px-3 md:p-0 rounded-sm ${
                     link.active
                       ? "text-white bg-blue-700 md:bg-transparent md:text-blue-700 md:dark:text-blue-500"
-                      : "text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500"
+                      : "text-gray-900 hover:bg-blue-300 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:text-blue-500"
                   }`}
                   aria-current={link.active ? "page" : undefined}
                 >
