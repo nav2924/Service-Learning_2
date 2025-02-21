@@ -6,12 +6,11 @@ const Layout = () => {
     <div>
       <Navbar />
       <Hero />
-
-      <section id="contact">
-        <Contact />
+      <section id="about">
+        <About />
       </section>
       <section id="contact">
-        <About/>
+        <Contact />
       </section>
     </div>
   );
