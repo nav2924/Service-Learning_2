@@ -1,6 +1,67 @@
-import React from "react";
+import React, { useState } from "react";
+import emailjs from "emailjs-com";
+import { ToastContainer } from "react-toastify";
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [loading, setLoading] = useState(false);
+
+  const [status, setStatus] = useState("");
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    const { name, email, message } = formData;
+
+    emailjs
+      .send(
+        "service_mz7dqjp",
+        "template_c9mpv0q",
+        {
+          from_name: name,
+          from_email: email,
+          message: message,
+        },
+        "j6d-aeIv-7n3rOoch"
+      )
+      .then(
+        (response) => {
+          console.log("Email successfully sent:", response);
+          setStatus("Message sent successfully!");
+          setFormData({ name: "", email: "", message: "" });
+
+          setLoading(false);
+
+          toast.success("Message sent successfully!", {
+            position: toast.POSITION.TOP_RIGHT,
+            autoClose: 3000,
+          });
+        },
+        (error) => {
+          console.error("Error sending email:", error);
+          setStatus("An error occurred, please try again.");
+
+          
+          setLoading(false);
+
+          toast.error("An error occurred, please try again.", {
+            position: toast.POSITION.TOP_RIGHT,
+            autoClose: 3000,
+          });
+        }
+      );
+  };
+
   const circlePositions = [
     { cx: "31.9993", cy: 132 },
     { cx: "31.9993", cy: "117.333" },
@@ -51,7 +112,7 @@ const Contact = () => {
           <div className="-mx-4 flex flex-wrap lg:justify-between ">
             <div className="w-full px-4 lg:w-1/2 xl:w-6/12">
               <div className="mb-12 max-w-[570px] lg:mb-0">
-                <span className="mb-4 font-semibold  flex items-center text-primary text-4xl">
+                <span className="mb-4 font-semibold flex items-center text-primary text-4xl">
                   Contact Us
                 </span>
                 <h2 className="mb-6 text-[32px] font-bold uppercase text-dark sm:text-[40px] lg:text-[36px] xl:text-[40px]">
@@ -155,119 +216,71 @@ const Contact = () => {
             </div>
             <div className="w-full px-4 lg:w-1/2 xl:w-5/12">
               <div className="relative rounded-lg bg-white p-8 shadow-lg dark:bg-dark-2 sm:p-12">
-                <form>
-                  <ContactInputBox
-                    type="text"
-                    name="name"
-                    placeholder="Your Name"
-                  />
-                  <ContactInputBox
-                    type="text"
-                    name="email"
-                    placeholder="Your Email"
-                  />
-                  <ContactInputBox
-                    type="text"
-                    name="phone"
-                    placeholder="Your Phone"
-                  />
-                  <ContactTextArea
-                    row="6"
-                    placeholder="Your Message"
-                    name="details"
-                    defaultValue=""
-                  />
-                  <div>
+                <form
+                  onSubmit={handleSubmit}
+                  className="bg-white p-6 rounded-lg shadow-lg"
+                >
+                  <div className="mb-4">
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      placeholder="Your Name"
+                      className="w-full p-3 border rounded text-gray-600"
+                      required
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      placeholder="Your Email"
+                      className="w-full p-3 border rounded text-gray-600"
+                      required
+                    />
+                  </div>
+                  <div className="mb-4">
+                    <textarea
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      placeholder="Your Message"
+                      rows="4"
+                      className="w-full p-3 border rounded text-gray-600"
+                      required
+                    ></textarea>
+                  </div>
+                  <div className="mb-4 text-center">
                     <button
                       type="submit"
-                      className="w-full rounded border border-primary bg-primary p-3 text-white transition hover:bg-opacity-90"
+                      className={`px-6 py-3 text-white bg-blue-700 rounded hover:bg-blue-500 ${
+                        loading ? "opacity-50 cursor-not-allowed" : ""
+                      }`}
+                      disabled={loading}  
                     >
-                      Send Message
+                      {loading ? (
+                        <span className="animate-spin">🔄</span> 
+                      ) : (
+                        "Send Message"
+                      )}
                     </button>
                   </div>
+                  {status && (
+                    <p className="text-center text-green-500">{status}</p>
+                  )}
                 </form>
-                <div>
-                  <span className="absolute -right-9 -top-10 z-[-1]">
-                    <svg
-                      width={100}
-                      height={100}
-                      viewBox="0 0 100 100"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        clipRule="evenodd"
-                        d="M0 100C0 44.7715 0 0 0 0C55.2285 0 100 44.7715 100 100C100 100 100 100 0 100Z"
-                        fill="#3056D3"
-                      />
-                    </svg>
-                  </span>
-                  <span className="absolute -right-10 top-[90px] z-[-1]">
-                    <svg
-                      width={34}
-                      height={134}
-                      viewBox="0 0 34 134"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      {circlePositions.map((pos, index) => (
-                        <Circle key={index} cx={pos.cx} cy={pos.cy} />
-                      ))}
-                    </svg>
-                  </span>
-                  <span className="absolute -bottom-7 -left-7 z-[-1]">
-                    <svg
-                      width={107}
-                      height={134}
-                      viewBox="0 0 107 134"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      {circlePositions.map((pos, index) => (
-                        <Circle key={index} cx={pos.cx} cy={pos.cy} />
-                      ))}
-                    </svg>
-                  </span>
-                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      <ToastContainer />
     </>
   );
 };
 
 export default Contact;
-
-const ContactTextArea = ({ row, placeholder, name, defaultValue }) => {
-  return (
-    <>
-      <div className="p-10">
-        <textarea
-          rows={row}
-          placeholder={placeholder}
-          name={name}
-          className="w-full resize-none rounded border border-stroke px-[14px] py-3 text-base text-body-color outline-none focus:border-primary dark:border-dark-3 dark:bg-dark dark:text-dark-6"
-          defaultValue={defaultValue}
-        />
-      </div>
-    </>
-  );
-};
-
-const ContactInputBox = ({ type, placeholder, name }) => {
-  return (
-    <>
-      <div className="mb-6">
-        <input
-          type={type}
-          placeholder={placeholder}
-          name={name}
-          className="w-full rounded border border-stroke px-[14px] py-3 text-base text-body-color outline-none focus:border-primary dark:border-dark-3 dark:bg-dark dark:text-dark-6"
-        />
-      </div>
-    </>
-  );
-};
