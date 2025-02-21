@@ -259,10 +259,10 @@ const Contact = () => {
                       className={`px-6 py-3 text-white bg-blue-700 rounded hover:bg-blue-500 ${
                         loading ? "opacity-50 cursor-not-allowed" : ""
                       }`}
-                      disabled={loading}  
+                      disabled={loading}
                     >
                       {loading ? (
-                        <span className="animate-spin">🔄</span> 
+                        <span className="animate-spin">🔄</span>
                       ) : (
                         "Send Message"
                       )}
@@ -274,6 +274,25 @@ const Contact = () => {
                 </form>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+      <section className="bg-blue-300">
+        <span className="text-4xl text-lime-950 font-bold flex items-center justify-center flex-items">
+          Our Location
+        </span>
+        <div className="container px-6 py-12 mx-auto my-auto">
+          <div className="overflow-hidden flex flex-item items-center justify-center w-auto rounded-lg lg:col-span-2 h-auto lg:h-auto">
+            <iframe
+              width="900px"
+              height="550px"
+              frameborder="0"
+              title="map"
+              marginheight="0"
+              marginwidth="0"
+              scrolling="no"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7779.543457757452!2d77.5853927!3d12.858015100000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae6bb71e00ff81%3A0xcfa1bfee19148e14!2sBethel%20child%20care%20centre!5e0!3m2!1sen!2sus!4v1740118814727!5m2!1sen!2sus"
+            ></iframe>
           </div>
         </div>
       </section>

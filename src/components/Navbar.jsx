@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const navLinks = [
-  { name: "Home", href: "#" , active: true},
+  { name: "Home", href: "#" },
   { name: "About us", href: "#about" },
   { name: "Contact", href: "#contact" },
 ];
@@ -12,7 +12,7 @@ const Navbar = () => {
   return (
     <nav className="relative z-50 h-full w-full bg-slate-50">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="" className="flex items-center space-x-3">
+        <a href="/" className="flex items-center space-x-3">
           {/* <img
             src=""
             className="h-8"
@@ -24,9 +24,13 @@ const Navbar = () => {
         </a>
 
         <div className="flex md:order-2 space-x-3 md:space-x-0">
-          <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+          <button
+            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            onClick={() => (window.location.href = "#contact")}
+          >
             Get started
           </button>
+
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
