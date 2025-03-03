@@ -3,24 +3,24 @@ import { FaDownload, FaFilePowerpoint } from "react-icons/fa";
 
 const pptFiles = [
   {
-    title: "Presentation 1",
-    link: "https://filesamples.com/samples/document/ppt/sample1.ppt",
+    title: "AI MODULE 5",
+    link: "src/assets/AI MODULE 5.pdf",
   },
   {
-    title: "Presentation 2",
-    link: "https://filesamples.com/samples/document/ppt/sample2.ppt",
+    title: "ETHICS MODULE 4",
+    link: "src/assets/ETHICS MODULE 4.pdf",
   },
   {
-    title: "Presentation 3",
-    link: "https://filesamples.com/samples/document/ppt/sample3.ppt",
+    title: "MODULE 1 CS",
+    link: "src/assets/MODULE 1 CS.pdf",
   },
   {
-    title: "Presentation 4",
-    link: "https://filesamples.com/samples/document/ppt/sample4.ppt",
+    title: "MODULE 2 PARTS OF A COMP",
+    link: "src/assets/MODULE 2 PARTS OF A COMP.pdf",
   },
   {
-    title: "Presentation 5",
-    link: "https://filesamples.com/samples/document/ppt/sample5.ppt",
+    title: "THE EVOLUTION MODULE 3",
+    link: "src/assets/THE EVOLUTION MODULE 3.pdf",
   },
 ];
 
