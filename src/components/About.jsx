@@ -25,13 +25,11 @@ const pptFiles = [
 ];
 
 const youtubeVideos = [
-  "https://www.youtube.com/embed/VIDEO_ID_1",
-  "https://www.youtube.com/embed/VIDEO_ID_2",
-  "https://www.youtube.com/embed/VIDEO_ID_3",
-  "https://www.youtube.com/embed/VIDEO_ID_4",
-  "https://www.youtube.com/embed/VIDEO_ID_5",
-  "https://www.youtube.com/embed/VIDEO_ID_6",
+  "https://www.youtube.com/embed/AkFi90lZmXA",
+  "https://www.youtube.com/embed/QtDAzhiTXC4",
+  "https://www.youtube.com/embed/RmbFJq2jADY",
 ];
+
 
 const PPTCard = ({ title, link }) => {
   return (
