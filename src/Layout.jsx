@@ -1,5 +1,5 @@
 import React from 'react'
-import { Navbar, Hero , Contact , About} from "./components/index";
+import { Navbar, Hero, Contact, About, Donate } from "./components/index";
 
 const Layout = () => {
   return (
@@ -9,6 +9,7 @@ const Layout = () => {
       <section id="about">
         <About />
       </section>
+      <Donate />
       <section id="contact">
         <Contact />
       </section>
