@@ -55,7 +55,7 @@ const Hero = () => {
 
                 <div className="flex items-center">
                   <p className="text-3xl font-medium text-gray-900 sm:text-4xl">
-                    $1M+
+                    Rs1000+
                   </p>
                   <p className="ml-3 text-sm text-gray-900">
                     Donations
